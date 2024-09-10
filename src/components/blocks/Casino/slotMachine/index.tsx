@@ -28,19 +28,19 @@ const SlotMachine = () => {
   const handleClickRoll = () => {
     setFirstReel(getRandomValueFromArray(icons));
     firstRef.current?.startAnimation({
-      duration: 2,
+      duration: 5,
       dummyCharacterCount: icons.length,
       direction: "top-down",
     });
     setSecondReel(getRandomValueFromArray(icons));
     secondRef.current?.startAnimation({
-      duration: 3,
+      duration: 6,
       dummyCharacterCount: icons.length,
       direction: "top-down",
     });
     setThirdReel(getRandomValueFromArray(icons));
     thirdRef.current?.startAnimation({
-      duration: 4,
+      duration: 7,
       dummyCharacterCount: icons.length,
       direction: "top-down",
     });
@@ -55,6 +55,7 @@ const SlotMachine = () => {
           value={[<>{firstReel}</>]}
           dummyCharacters={icons}
           dummyCharacterCount={icons.length}
+          speed={10}
         />
         <SlotCounter
           key={"secondSlots"}
@@ -62,6 +63,7 @@ const SlotMachine = () => {
           value={[<>{secondReel}</>]}
           dummyCharacters={icons}
           dummyCharacterCount={icons.length}
+          speed={10}
         />
         <SlotCounter
           key={"thirdSlots"}
@@ -69,6 +71,7 @@ const SlotMachine = () => {
           value={[<>{thirdReel}</>]}
           dummyCharacters={icons}
           dummyCharacterCount={icons.length}
+          speed={10}
         />
       </SlotsContainer>
       <BetControls handleSpinButton={handleClickRoll} />
