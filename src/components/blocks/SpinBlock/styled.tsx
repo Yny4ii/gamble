@@ -20,15 +20,3 @@ export const MarketsContainer = styled.div`
   gap: 40px;
   margin-top: 40px;
 `;
-export const SpinContainer = styled.div`
-  background-image: url("/Spin.png");
-  width: 690px;
-  height: 730px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  position: absolute;
-  top: -100%;
-  left: 50%;
-  transform: translate(-50%, 50%);
-`;

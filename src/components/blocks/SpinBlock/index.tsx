@@ -3,7 +3,6 @@ import React from "react";
 import {
   MarketsContainer,
   SpinBlockContainer,
-  SpinContainer,
 } from "@/components/blocks/SpinBlock/styled";
 import Article from "@/components/typography/article";
 import { MarketLink } from "@/components/ui/buttons/MarketButton/styled";
@@ -12,6 +11,7 @@ import OkxIcon from "@/icons/OkxIcon";
 import ByBitIcon from "@/icons/ByBitIcon";
 import Gamble2 from "@/icons/Gamble2";
 import Gamble3 from "@/icons/Gamble3";
+import SpinWheel from "@/components/blocks/SpinBlock/SpinWheel";
 
 const marketsLinks = [
   {
@@ -31,7 +31,7 @@ const SpinBlock = () => {
   return (
     <SpinBlockContainer>
       <Gamble2 />
-      <SpinContainer />
+      <SpinWheel />
       <Article small={true} text={"Available on"} />
       <MarketsContainer>
         {marketsLinks.map((e, index) => (
