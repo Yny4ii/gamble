@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const SpinWheelInnerContainer = styled.div<{ rotation: number }>`
+export const SpinWheelInnerContainer = styled.div<{ $rotation: number }>`
   width: 695px;
   height: 695px;
   transition: transform 5s ease-in-out;
-  transform: rotate(${(props) => props.rotation}deg);
+  transform: rotate(${(props) => props.$rotation}deg);
   background-image: url("/SpinWheel.png");
   background-size: contain;
   background-repeat: no-repeat;

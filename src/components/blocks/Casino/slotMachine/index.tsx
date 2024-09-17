@@ -1,80 +1,81 @@
-import React, { useRef, useState } from "react";
-import SolanaIcon from "@/components/blocks/Casino/icons/SolanaIcon";
-import AvalancheIcon from "@/components/blocks/Casino/icons/AvalancheIcon";
-import FantomIcon from "@/components/blocks/Casino/icons/FantomIcon";
-import SlotCounter, { SlotCounterRef } from "react-slot-counter";
-import {
-  SlotMachineContainer,
-  SlotsContainer,
-} from "@/components/blocks/Casino/slotMachine/styled";
-import { getRandomValueFromArray } from "@/lib/utils";
+import Dollar1 from "@/components/blocks/Casino/icons/Dollar1";
+import React, { useState } from "react";
 import BetControls from "@/components/blocks/Casino/betControls";
+import {
+  DollarContainer,
+  ReelsContainer,
+  SlotMachineContainer,
+} from "@/components/blocks/Casino/slotMachine/styled";
+import Dollar2 from "@/components/blocks/Casino/icons/Dollar2";
+import Dollar3 from "@/components/blocks/Casino/icons/Dollar3";
+import Dollar4 from "@/components/blocks/Casino/icons/Dollar4";
+import Reel from "@/components/blocks/Casino/slotMachine/reel";
 
-const icons = [
-  <SolanaIcon key={"solana"} />,
-  <AvalancheIcon key={"avalanche"} />,
-  <FantomIcon key={"fantom"} />,
+const dollarsArray = [
+  {
+    icon: <Dollar1 />,
+    x: -70,
+    y: 500,
+  },
+  {
+    icon: <Dollar2 />,
+    x: 620,
+    y: 460,
+  },
+  {
+    icon: <Dollar3 />,
+    x: -70,
+    y: 250,
+  },
+  {
+    icon: <Dollar4 />,
+    x: 670,
+    y: 280,
+  },
 ];
 
-const SlotMachine = () => {
-  const firstRef = useRef<SlotCounterRef>(null);
-  const secondRef = useRef<SlotCounterRef>(null);
-  const thirdRef = useRef<SlotCounterRef>(null);
+const SlotMachine: React.FC = () => {
+  const [spinning, setSpinning] = useState(false);
+  const [results, setResults] = useState<number[]>([0, 1, 2]);
+  const [isWin, setIsWin] = useState(false);
 
-  const [firstReel, setFirstReel] = useState(icons[0]);
-  const [secondReel, setSecondReel] = useState(icons[1]);
-  const [thirdReel, setThirdReel] = useState(icons[2]);
+  const handleSpin = () => {
+    if (!spinning) {
+      setSpinning(true);
 
-  const handleClickRoll = () => {
-    setFirstReel(getRandomValueFromArray(icons));
-    firstRef.current?.startAnimation({
-      duration: 5,
-      dummyCharacterCount: icons.length,
-      direction: "top-down",
-    });
-    setSecondReel(getRandomValueFromArray(icons));
-    secondRef.current?.startAnimation({
-      duration: 6,
-      dummyCharacterCount: icons.length,
-      direction: "top-down",
-    });
-    setThirdReel(getRandomValueFromArray(icons));
-    thirdRef.current?.startAnimation({
-      duration: 7,
-      dummyCharacterCount: icons.length,
-      direction: "top-down",
-    });
+      const newResults = [
+        Math.floor(Math.random() * 5),
+        Math.floor(Math.random() * 5),
+        Math.floor(Math.random() * 5),
+      ];
+      setResults(newResults);
+
+      setTimeout(() => {
+        setSpinning(false);
+        if (
+          newResults[0] === newResults[1] &&
+          newResults[1] === newResults[2]
+        ) {
+          setIsWin(true);
+          setTimeout(() => setIsWin(false), 1500);
+        }
+      }, 3000);
+    }
   };
 
   return (
     <SlotMachineContainer>
-      <SlotsContainer>
-        <SlotCounter
-          key={"firstSlots"}
-          ref={firstRef}
-          value={[<>{firstReel}</>]}
-          dummyCharacters={icons}
-          dummyCharacterCount={icons.length}
-          speed={10}
-        />
-        <SlotCounter
-          key={"secondSlots"}
-          ref={secondRef}
-          value={[<>{secondReel}</>]}
-          dummyCharacters={icons}
-          dummyCharacterCount={icons.length}
-          speed={10}
-        />
-        <SlotCounter
-          key={"thirdSlots"}
-          ref={thirdRef}
-          value={[<>{thirdReel}</>]}
-          dummyCharacters={icons}
-          dummyCharacterCount={icons.length}
-          speed={10}
-        />
-      </SlotsContainer>
-      <BetControls handleSpinButton={handleClickRoll} />
+      <ReelsContainer>
+        <Reel spinning={spinning} result={results[0]} />
+        <Reel spinning={spinning} result={results[1]} />
+        <Reel spinning={spinning} result={results[2]} />
+      </ReelsContainer>
+      <BetControls handleSpinButton={handleSpin} />
+      {dollarsArray.map((e, i) => (
+        <DollarContainer key={i} $y={e.y} $x={e.x} $animate={isWin}>
+          {e.icon}
+        </DollarContainer>
+      ))}
     </SlotMachineContainer>
   );
 };

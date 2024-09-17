@@ -27,7 +27,7 @@ const SpinWheel = () => {
     <SpinWheelPositionContainer>
       <SpinWheelOuterContainer>
         <SpinArrowIcon />
-        <SpinWheelInnerContainer rotation={rotation} />
+        <SpinWheelInnerContainer $rotation={rotation} />
         <SpinButton onClick={handleSpin} />
       </SpinWheelOuterContainer>
     </SpinWheelPositionContainer>

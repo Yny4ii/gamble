@@ -8,7 +8,6 @@ const Dollar3 = () => {
       viewBox="0 0 69 111"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ position: "absolute", bottom: 260, left: 170 }}
     >
       <path
         d="M19.8435 7.3463L10.4015 5.73452L26.8674 0.553741L36.3861 2.12716L19.8435 7.3463Z"

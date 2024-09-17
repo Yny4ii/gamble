@@ -25,11 +25,11 @@ const BetControls = ({ handleSpinButton }: BetControlsProps) => {
       <BetButtonsContainer>
         <ChangeBetButton
           bgColor={"#001430"}
-          buttonIcon={<PlusBetButtonIcon />}
+          buttonIcon={<MinusBetButtonIcon />}
         />
         <ChangeBetButton
           bgColor={"#001430"}
-          buttonIcon={<MinusBetButtonIcon />}
+          buttonIcon={<PlusBetButtonIcon />}
         />
       </BetButtonsContainer>
 

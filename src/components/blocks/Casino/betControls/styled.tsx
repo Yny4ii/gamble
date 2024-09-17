@@ -8,7 +8,7 @@ export const BetControlsContainer = styled.div`
   gap: 14px;
   position: absolute;
   bottom: -136px;
-  z-index: 3;
+  z-index: 5;
 `;
 
 export const BetButtonsContainer = styled.div`
