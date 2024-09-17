@@ -9,7 +9,7 @@ import {
 import Dollar2 from "@/components/blocks/Casino/icons/Dollar2";
 import Dollar3 from "@/components/blocks/Casino/icons/Dollar3";
 import Dollar4 from "@/components/blocks/Casino/icons/Dollar4";
-import Reel from "@/components/blocks/Casino/slotMachine/reel";
+import Reel, { slots } from "@/components/blocks/Casino/slotMachine/reel";
 
 const dollarsArray = [
   {
@@ -44,12 +44,11 @@ const SlotMachine: React.FC = () => {
       setSpinning(true);
 
       const newResults = [
-        Math.floor(Math.random() * 5),
-        Math.floor(Math.random() * 5),
-        Math.floor(Math.random() * 5),
+        Math.floor(Math.random() * slots.length),
+        Math.floor(Math.random() * slots.length),
+        Math.floor(Math.random() * slots.length),
       ];
       setResults(newResults);
-
       setTimeout(() => {
         setSpinning(false);
         if (
