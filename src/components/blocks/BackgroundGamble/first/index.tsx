@@ -1,9 +1,16 @@
 "use client";
 import React from "react";
-import { FirstBackgroundGambleContainer } from "@/components/blocks/BackgroundGamble/first/styled";
+import {
+  SmoothTransitionBlock,
+  FirstBackgroundGambleContainer,
+} from "@/components/blocks/BackgroundGamble/first/styled";
 
 const BackgroundGambleFirst = () => {
-  return <FirstBackgroundGambleContainer />;
+  return (
+    <FirstBackgroundGambleContainer>
+      <SmoothTransitionBlock />
+    </FirstBackgroundGambleContainer>
+  );
 };
 
 export default BackgroundGambleFirst;
