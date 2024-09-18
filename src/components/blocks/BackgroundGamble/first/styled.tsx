@@ -9,4 +9,20 @@ export const FirstBackgroundGambleContainer = styled.div`
   margin: 0 auto 82px;
   width: 100%;
   height: 800px;
+
+  position: relative;
+`;
+
+export const SmoothTransitionBlock = styled.div`
+  position: absolute;
+  top: -34px;
+  left: 0;
+  min-width: 1440px;
+  height: 80px;
+  background-image: radial-gradient(
+    50.16% 38.46% at 49.19% 38.59%,
+    rgb(45 10 8) 26.34%,
+    rgb(89 32 171 / 0%) 100%
+  );
+  pointer-events: none;
 `;

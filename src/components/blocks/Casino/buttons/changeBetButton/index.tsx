@@ -3,16 +3,20 @@ import {
   ChangeBetButtonBackground,
   ChangeBetButtonContainer,
 } from "@/components/blocks/Casino/buttons/changeBetButton/styled";
-import MinusBetButtonIcon from "@/components/blocks/Casino/buttons/changeBetButton/icons/MinusBetButtonIcon";
 
 interface ChangeBetButtonProps {
   buttonIcon: React.ReactNode;
   bgColor: string;
+  onClick: () => void;
 }
 
-const ChangeBetButton = ({ buttonIcon, bgColor }: ChangeBetButtonProps) => {
+const ChangeBetButton = ({
+  buttonIcon,
+  bgColor,
+  onClick,
+}: ChangeBetButtonProps) => {
   return (
-    <ChangeBetButtonBackground $bgColor={bgColor}>
+    <ChangeBetButtonBackground onClick={onClick} $bgColor={bgColor}>
       <ChangeBetButtonContainer>{buttonIcon}</ChangeBetButtonContainer>
     </ChangeBetButtonBackground>
   );

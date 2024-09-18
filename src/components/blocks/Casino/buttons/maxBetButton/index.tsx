@@ -5,9 +5,13 @@ import {
 } from "@/components/blocks/Casino/buttons/maxBetButton/styled";
 import MaxBetButtonIcon from "@/components/blocks/Casino/buttons/maxBetButton/icons/MaxBetButtonIcon";
 
-const MaxBetButton = () => {
+interface MaxBetButtonProps {
+  onClick: () => void;
+}
+
+const MaxBetButton = ({ onClick }: MaxBetButtonProps) => {
   return (
-    <MaxBetButtonBackground>
+    <MaxBetButtonBackground onClick={onClick}>
       <MaxBetButtonContainer>
         <MaxBetButtonIcon />
       </MaxBetButtonContainer>

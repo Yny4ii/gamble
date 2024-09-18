@@ -10,6 +10,7 @@ import Dollar2 from "@/components/blocks/Casino/icons/Dollar2";
 import Dollar3 from "@/components/blocks/Casino/icons/Dollar3";
 import Dollar4 from "@/components/blocks/Casino/icons/Dollar4";
 import Reel, { slots } from "@/components/blocks/Casino/slotMachine/reel";
+import useCasinoStore from "@/stores/casino/casinoStore";
 
 const dollarsArray = [
   {
@@ -38,9 +39,11 @@ const SlotMachine: React.FC = () => {
   const [spinning, setSpinning] = useState(false);
   const [results, setResults] = useState<number[]>([0, 1, 2]);
   const [isWin, setIsWin] = useState(false);
+  const { minusBalance, balance, changeTotalWin, plusBalance, totalBet } =
+    useCasinoStore();
 
   const handleSpin = () => {
-    if (!spinning) {
+    if (!spinning && balance > 0) {
       setSpinning(true);
 
       const newResults = [
@@ -56,7 +59,12 @@ const SlotMachine: React.FC = () => {
           newResults[1] === newResults[2]
         ) {
           setIsWin(true);
+          plusBalance(totalBet * 5);
+          changeTotalWin(totalBet * 5);
           setTimeout(() => setIsWin(false), 1500);
+        } else {
+          minusBalance(totalBet);
+          changeTotalWin(0);
         }
       }, 3000);
     }

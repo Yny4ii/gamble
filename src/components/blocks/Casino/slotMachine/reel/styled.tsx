@@ -47,5 +47,5 @@ export const ReelItem = styled.div<{ $index: number }>`
   justify-content: center;
   backface-visibility: hidden;
   transform: rotateX(${({ $index }) => $index * (360 / slots.length)}deg)
-    translateZ(120px); /* Создание цилиндра */
+    translateZ(106px); /* Создание цилиндра */
 `;

@@ -22,3 +22,10 @@ export const BetButtonsContainer = styled.div`
   width: 321px;
   height: 83px;
 `;
+
+export const TotalBetQuantityContainer = styled.span`
+  font-size: 36px;
+  margin-top: 20px;
+  font-style: italic;
+  transform: rotateX(28deg);
+`;
